@@ -5,7 +5,7 @@ RSpec.describe RecipeFacade do
     describe '#search' do 
       it 'creates an array of recipe objects from search results', :vcr do 
         search_results = RecipeFacade.search('thailand')
-        expect(search_results).to be_an array
+        expect(search_results).to be_an Array
         expect(search_results).to all(be_a Recipe)
       end
 
@@ -19,7 +19,7 @@ RSpec.describe RecipeFacade do
             }
           }]
         }
-        allow_any_instance_of(RecipeService).to receive(:search).and_return(mock_data)
+        allow(RecipeService).to receive(:search).and_return(mock_data)
 
         search_results = RecipeFacade.search('thailand')
         expect(search_results.length).to eq(1)
@@ -29,7 +29,7 @@ RSpec.describe RecipeFacade do
 
       it 'When there are no search results, an empty array is returned' do 
         mock_data = {hits: []}
-        allow_any_instance_of(RecipeService).to receive(:search).and_return(mock_data)
+        allow(RecipeService).to receive(:search).and_return(mock_data)
         search_results = RecipeFacade.search('thailand')
         expect(search_results).to be_an Array 
         expect(search_results).to be_empty
