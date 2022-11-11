@@ -7,7 +7,7 @@ class RecipeService
       q: query,
       field: %w[label image url]
     }
-    response = conn.get('api/recipes/v2', params)
+    response = conn.get('api/recipes/v2', query_params)
     JSON.parse(response.body, symbolize_names: true)
   end
 
