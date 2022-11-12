@@ -35,5 +35,14 @@ RSpec.describe RecipeFacade do
         expect(search_results).to be_empty
       end
     end
+    
+    describe '#random' do 
+      it 'creates an array of recipes from a random country', :vcr do 
+        allow(CountryService).to receive(:random).and_return('thailand')
+        search_results = RecipeFacade.random
+        expect(search_results).to be_an Array
+        expect(search_results).to all(be_a Recipe)
+      end
+    end
   end
 end
