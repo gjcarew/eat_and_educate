@@ -8,10 +8,10 @@ RSpec.describe 'Recipes API' do
       recipes = JSON.parse(response.body, symbolize_names: true)
       expect(recipes[:data]).to be_an Array
       recipes[:data].each do |recipe|
-        expect(recipe).to have_key 'id'
+        expect(recipe).to have_key :id
         expect(recipe[:type]).to eq('recipe')
         expect(recipe[:attributes]).to be_a Hash
-        expect(recipe[:attributes].keys).to eq(%w[title url country image])
+        expect(recipe[:attributes].keys).to eq(%i[title url country image])
         expect(recipe[:attributes].values).to all(be_a String)
       end
     end
@@ -22,10 +22,10 @@ RSpec.describe 'Recipes API' do
       recipes = JSON.parse(response.body, symbolize_names: true)
       expect(recipes[:data]).to be_an Array
       recipes[:data].each do |recipe|
-        expect(recipe).to have_key 'id'
+        expect(recipe).to have_key :id
         expect(recipe[:type]).to eq('recipe')
         expect(recipe[:attributes]).to be_a Hash
-        expect(recipe[:attributes].keys).to eq(%w[title url country image])
+        expect(recipe[:attributes].keys).to eq(%i[title url country image])
         expect(recipe[:attributes].values).to all(be_a String)
       end
     end

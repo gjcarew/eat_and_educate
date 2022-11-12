@@ -12,7 +12,7 @@ class RecipeFacade
 
   private
 
-  def create_recipes(results, query)
+  def self.create_recipes(results, query)
     results[:hits].map do |hit|
       Recipe.new(hit, query)
     end
