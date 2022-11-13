@@ -17,6 +17,7 @@ RSpec.describe 'Recipes API' do
     end
 
     it "If the 'country' query param DNE, it returns recipes from a random country", :vcr do 
+      allow(CountryService).to receive(:random).and_return('Ireland')
       get api_v1_recipes_path
       expect(response).to be_successful
       recipes = JSON.parse(response.body, symbolize_names: true)

@@ -8,9 +8,9 @@ RSpec.describe 'Learning resources' do
 
       resources = JSON.parse(response.body, symbolize_names: true)
       expect(resources).to be_a Hash
-      expect(resouces[:data][:id]).to be_nil
+      expect(resources[:data][:id]).to be_nil
       expect(resources[:data][:type]).to eq('learning_resource')
-      expect(resources[:data][:attributes]).to be_a Hash
+      expect(resources[:data][:attributes]).to be_a Hash 
     end
 
     it 'has a country, video, and images', :vcr do
