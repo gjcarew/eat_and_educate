@@ -13,10 +13,11 @@ RSpec.describe LearningResource do
     video_data = VideoService.search('laos')
     resource = LearningResource.new(video_data, image_data, 'laos')
     expect(resource.id).to be_nil
-    
+    expect(resource.country).to eq('laos')
+
     expect(resource.video).to be_a Hash
-    expect(resource.video).to have_key :title
-    expect(resource.video).to have_key :youtube_video_id
+    expect(resource.video[:title]).to be_a String
+    expect(resource.video[:youtube_video_id]).to be_a String
 
     expect(resource.images).to be_an Array
     resource.images.each do |image|
