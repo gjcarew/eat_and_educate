@@ -11,3 +11,4 @@ RSpec.describe VideoService do
       end
     end
   end
+end
