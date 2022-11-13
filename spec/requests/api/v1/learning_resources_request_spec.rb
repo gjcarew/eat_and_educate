@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Learning resources' do 
   context 'happy path' do 
     it 'returns a hash of learning resources', :vcr do 
-      visit api_v1_learning_resources_path({country: 'laos'})
+      get api_v1_learning_resources_path({country: 'laos'})
       expect(response).to be_successful
 
       resources = JSON.parse(response.body, symbolize_names: true)
@@ -14,7 +14,7 @@ RSpec.describe 'Learning resources' do
     end
 
     it 'has a country, video, and images', :vcr do
-      visit api_v1_learning_resources_path({country: 'laos'})
+      get api_v1_learning_resources_path({country: 'laos'})
       resources = JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
 
       expect(resources[:country]).to eq('laos')
