@@ -4,13 +4,10 @@ RSpec.describe VideoService do
   context 'class methods' do 
     context '#search' do 
       it 'returns recipe data', :vcr do
-        search = RecipeService.search('thailand')
+        search = VideoService.search('laos')
         expect(search).to be_a Hash 
-        search[:hits].each do |hit|
-          expect(hit[:recipe][:url]).to be_a String
-          expect(hit[:recipe][:label]).to be_a String
-          expect(hit[:recipe][:image]).to be_a String
-        end
+        expect(search[:items][0][:id][:videoId]).to be_a String
+        expect(search[:items][0][:snippet][:title]).to be_a String
       end
     end
   end
