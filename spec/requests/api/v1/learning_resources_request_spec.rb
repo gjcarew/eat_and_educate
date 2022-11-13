@@ -29,4 +29,23 @@ RSpec.describe 'Learning resources' do
       end
     end
   end
+
+  context 'Sad path' do 
+    it 'returns an unsuccessful code if no country param is passed', :vcr do 
+      get api_v1_learning_resources_path
+      expect(response).to_not be_successful
+    end 
+
+    it 'returns an empty hash if no videos are found', :vcr do 
+      get api_v1_learning_resources_path({country: 'balloon'})
+      resources = JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
+      expect(resources[:video]).to eq({})
+    end
+
+    it 'returns an empty array if no images are found', :vcr do 
+      get api_v1_learning_resources_path({country: 'DRLl6AjP3KM'})
+      resources = JSON.parse(response.body, symbolize_names: true)[:data][:attributes]
+      expect(resources[:images]).to be_empty
+    end
+  end
 end
