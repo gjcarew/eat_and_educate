@@ -10,10 +10,11 @@ RSpec.describe CountryService do
     end
 
     context '#latlng' do 
-      it 'gets the latitude and longitude for a country' do 
+      it 'gets the latitude and longitude for a country', :vcr do 
         latlng = CountryService.latlng('France')
+        # require 'pry';binding.pry
         expect(latlng).to be_an Array
-        expect(latlng).to all(be_a Float)
+        expect(latlng.first[:latlng]).to all(be_a Float)
       end
     end
   end

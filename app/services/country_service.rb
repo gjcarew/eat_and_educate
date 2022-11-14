@@ -6,6 +6,13 @@ class CountryService
     arr.map { |country| country[:name] }.sample
   end
 
+  def self.latlng(country)
+    response = conn.get("v3.1/name/#{country}") do |req|
+      req.params[:fields] = 'name,latlng'
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   private
 
   def self.conn
