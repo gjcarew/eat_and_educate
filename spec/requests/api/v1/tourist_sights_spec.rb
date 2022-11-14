@@ -33,7 +33,7 @@ RSpec.describe 'Tourist sights endpoint' do
   end
 
   context 'sad path' do 
-    it 'returns an empty array if there are no matches', :vcr do 
+    it 'returns an empty array if there are no matches (invalid country)', :vcr do 
       get api_v1_tourist_sights_path({country: 'xxxxxxxx'})
       expect(response).to be_successful
       empty_response = JSON.parse(response.body, symbolize_names: true)
