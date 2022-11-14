@@ -32,19 +32,19 @@ RSpec.describe 'Tourist sights endpoint' do
     end
   end
 
-  # context 'sad path' do 
-  #   it 'returns an empty array if there are no matches', :vcr do 
-  #     get api_v1_recipes_path({country: 'xxxxxxxx'})
-  #     expect(response).to be_successful
-  #     empty_response = JSON.parse(response.body, symbolize_names: true)
-  #     expect(empty_response).to eq({data: []})
-  #   end
+  context 'sad path' do 
+    it 'returns an empty array if there are no matches', :vcr do 
+      get api_v1_tourist_sights_path({country: 'xxxxxxxx'})
+      expect(response).to be_successful
+      empty_response = JSON.parse(response.body, symbolize_names: true)
+      expect(empty_response).to eq({data: []})
+    end
 
-  #   it 'returns an empty array if no query string is entered', :vcr do 
-  #     get api_v1_recipes_path({country: ''})
-  #     expect(response).to be_successful
-  #     empty_response = JSON.parse(response.body, symbolize_names: true)
-  #     expect(empty_response).to eq({data: []})
-  #   end
-  # end
+    it 'returns an empty array if no query string is entered', :vcr do 
+      get api_v1_tourist_sights_path({country: ''})
+      expect(response).to be_successful
+      empty_response = JSON.parse(response.body, symbolize_names: true)
+      expect(empty_response).to eq({data: []})
+    end
+  end
 end
