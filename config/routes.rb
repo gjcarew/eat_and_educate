@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :recipes, only: :index
       resource :learning_resources, only: :show
       resources :users, only: :create
+      resources :tourist_sights, only: :index
     end
   end
 end
