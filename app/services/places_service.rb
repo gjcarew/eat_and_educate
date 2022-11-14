@@ -1,8 +1,8 @@
 class PlacesService
-  def self.tourist_sights(long, lat)
+  def self.tourist_sights(latlng)
     response = conn.get('/v2/places') do |req|
       req.params[:categories] = 'tourism.sights'
-      req.params[:filter] = "circle:#{long},#{lat},20000"
+      req.params[:filter] = "circle:#{latlng[0]},#{latlng[1]},20000"
       req.params[:categories] = 'tourism.sights'
       req.params[:apiKey] = ENV['PLACES_KEY']
     end
