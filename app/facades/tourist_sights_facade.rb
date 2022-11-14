@@ -6,4 +6,9 @@ class TouristSightsFacade
       TouristSight.new(sight[:properties])
     end
   end
+
+  def self.random
+    rand_country = CountryService.random
+    country(rand_country)
+  end
 end
