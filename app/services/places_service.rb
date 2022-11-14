@@ -1,6 +1,6 @@
 class PlacesService
-  def tourist_sights(long, lat)
-    sights = conn.get('/v2/places') do |req|
+  def self.tourist_sights(long, lat)
+    response = conn.get('/v2/places') do |req|
       req.params[:categories] = 'tourism.sights'
       req.params[:filter] = "circle:#{long},#{lat},20000"
       req.params[:categories] = 'tourism.sights'
@@ -12,7 +12,7 @@ class PlacesService
 
   private
 
-  def conn 
+  def self.conn 
     Faraday.new('https://api.geoapify.com')
   end
 end
