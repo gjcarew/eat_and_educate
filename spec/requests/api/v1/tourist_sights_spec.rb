@@ -29,7 +29,7 @@ RSpec.describe 'Tourist sights endpoint' do
     #     expect(recipe[:attributes].keys).to eq(%i[title url country image])
     #     expect(recipe[:attributes].values).to all(be_a String)
     #   end
-    end
+    # end
   end
 
   # context 'sad path' do 
