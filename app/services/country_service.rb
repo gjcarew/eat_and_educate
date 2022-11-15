@@ -7,10 +7,12 @@ class CountryService
   end
 
   def self.latlng(country)
-    response = conn.get("v3.1/name/#{country}") do |req|
-      req.params[:fields] = 'name,latlng'
+    Rails.cache.fetch("latlng-#{country}", expires_in: 90.days) do
+      response = conn.get("v3.1/name/#{country}") do |req|
+        req.params[:fields] = 'name,latlng'
+      end
+      JSON.parse(response.body, symbolize_names: true)
     end
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
