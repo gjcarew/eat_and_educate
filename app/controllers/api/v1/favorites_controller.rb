@@ -12,7 +12,10 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def index
+    user = User.find_by(api_key: params[:api_key])
+    return render json: { error: 'API key not found' }, status: :not_found if user.nil?
 
+    render json: FavoriteSerializer.new(user.favorites, is_collection: true)
   end
 
   private
