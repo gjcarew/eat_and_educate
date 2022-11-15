@@ -102,4 +102,39 @@ RSpec.describe "Favorites", type: :request do
       end
     end
   end
+
+  context 'DELETE /destroy' do 
+    context 'happy path' do
+      it 'deletes a favorite' do 
+        user = create(:user)
+        favorites = create_list(:favorite, 3, user_id: user.id)
+
+        delete api_v1_favorites_path({ id: favorites[0].id, api_key: user.api_key })
+
+        expect(response.code).to eq('204')
+        expect(user.favorites.length).to eq(2)
+      end
+    end
+
+    context 'sad path' do
+      it 'returns a 404 code if the API key does not match a user' do
+        user = create(:user)
+        favorites = create_list(:favorite, 3, user_id: user.id)
+        delete api_v1_favorites_path({ id: favorites[0].id, api_key: 'whatevs' })
+        expect(response.code).to eq('404')
+        error = JSON.parse(response.body, symbolize_names: true)
+        expect(error).to eq({ error: 'API key not found' })
+      end
+
+      it 'returns a 404 code if the favorite ID does not match a favorite' do 
+        user = create(:user)
+        create_list(:favorite, 3, user_id: user.id)
+        delete api_v1_favorites_path({ id: 25, api_key: user.api_key })
+        expect(response.code).to eq('404')
+        error = JSON.parse(response.body, symbolize_names: true)
+        expect(error).to eq({ error: 'Favorite not found' })
+        expect(user.favorites.length).to eq(3)
+      end
+    end
+  end
 end

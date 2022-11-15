@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: :create
       resources :tourist_sights, only: :index
       resources :favorites, only: %i[create index]
+      resource :favorites, only: :destroy
     end
   end
 end
