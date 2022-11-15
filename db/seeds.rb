@@ -6,4 +6,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name: 'Morge', email: 'example@email.com', password: 'secure_pw', api_key: 'fake_key')
+morge = User.create!(name: 'Morge', email: 'example@email.com', password: 'secure_pw', api_key: 'fake_key')
+morge.favorites.create!(recipe_link: 'recipe url', recipe_title: 'recipe title', country: 'Benin')
+User.create!(name: 'Alan', email: 'ex@email.com', password: 'secure_pw', api_key: 'alans_key')
