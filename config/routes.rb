@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resource :learning_resources, only: :show
       resources :users, only: :create
       resources :tourist_sights, only: :index
+      resources :favorites, only: %i[create index]
     end
   end
 end
