@@ -117,7 +117,7 @@ Gets learning resources from a single country.
 
    | Parameter      | Description | Parameter type      | Data type |
    | ----------- | ----------- | ----------- | ----------- |
-   | **country** | Optional       | query   | String        |
+   | **country** | Country to get resources for      | query   | String        |
 
 
 **Sample response (status 200)**
