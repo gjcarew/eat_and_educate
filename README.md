@@ -9,11 +9,17 @@ Created with Rails 5.2.8
 
 Reach out to me on [Linkedin](https://www.linkedin.com/in/gavin-carew-6476748a/) or  [Github](https://github.com/gjcarew) 
 
-## Table of contents
-
+## <a name="contents"></a> Table of contents
 - [Database setup](#database-setup)
 - [Endpoints](#endpoints)
-- [Query parameters](#query-params)
+  - [Get recipes from a country](#get-recipes)
+  - [Get learning resources from a country](#get-resources)
+  - [Register a new user](#register)
+  - [User login](#login)
+  - [User logout](#logout)
+  - [Add a new favorite recipe](#new-favorite)
+  - [Get a user's favorites](#favorites)
+  - [Delete a user's favorites](#delete-favorite)
 
 ## <a name="database-setup"></a>Database Setup
 
@@ -55,7 +61,9 @@ rails s
 
 # <a name="endpoints"></a>Endpoints
 
-## GET /api/v1/recipes
+## <a name="get-recipes"></a> GET /api/v1/recipes
+[Back to top](#contents)
+
 Gets recipes from a single country.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -102,7 +110,9 @@ Gets recipes from a single country.
  }
  ```
 ---
- ## GET /api/v1/learning_resources
+ ## <a name="get-resources"></a>GET /api/v1/learning_resources
+ [Back to top](#contents)
+
 Gets learning resources from a single country.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -137,7 +147,9 @@ Gets learning resources from a single country.
  }
  ```
 ---
- ## POST /api/v1/users
+ ## POST <a name="register"></a>/api/v1/users
+ [Back to top](#contents)
+
 Register a new user. For this endpoint, all parameters are required.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -163,8 +175,44 @@ Register a new user. For this endpoint, all parameters are required.
 }
  ```
 ---
- ## POST /api/v1/favorites
-Register a new user. For this endpoint, all parameters are required.
+ ## POST <a name="login"></a>/api/v1/sessions
+ [Back to top](#contents)
+
+User login. For this endpoint, all parameters are required.
+
+   | Parameter      | Description | Parameter type      | Data type |
+   | ----------- | ----------- | ----------- | ----------- |
+   | **email** | User email  | body   | String        |
+   | **password** | User password      | body   | String        |
+
+**Sample response (status 201)**
+ ```json
+{
+    "data": {
+        "id": "3",
+        "type": "user",
+        "attributes": {
+            "name": "Athena Dao",
+            "email": "athenadao@bestgirlever.com",
+            "api_key": "58ec6581e4ce87b5b154332c7bbd6b1c"
+        }
+    }
+}
+ ```
+ ---
+  ## <a name="logout"></a>DELETE /api/v1/sessions
+ [Back to top](#contents)
+
+Logs a user out/ ends their session.
+
+A successful response will return return a `204 No Content` status code.
+
+---
+
+ ## <a name="new-favorite"></a>POST /api/v1/favorites
+ [Back to top](#contents)
+
+Add a new favorite recipe. For this endpoint, all parameters are required.
 
    | Parameter      | Description | Parameter type      | Data type |
    | ----------- | ----------- | ----------- | ----------- |
@@ -183,14 +231,16 @@ Register a new user. For this endpoint, all parameters are required.
 
  ```
 ---
- ## GET /api/v1/favorites
+ ## <a name="favorites"></a>GET /api/v1/favorites
+ [Back to top](#contents)
+
 Get a user's favorites
 
    | Parameter      | Description | Parameter type      | Data type |
    | ----------- | ----------- | ----------- | ----------- |
    | **api_key** | Must match a user's API key    | query   | String        |
 
-**Sample response (status 201)**
+**Sample response (status 200)**
  ```json
 {
     "data": [
@@ -218,8 +268,10 @@ Get a user's favorites
 }
  ```
 ---
- ## DELETE /api/v1/favorites
-Register a new user. For this endpoint, all parameters are required.
+ ## <a name="delete-favorite"></a>DELETE /api/v1/favorites
+ [Back to top](#contents)
+
+Delete one of the user's favorited recipes.
 
    | Parameter      | Description | Parameter type      | Data type |
    | ----------- | ----------- | ----------- | ----------- |
