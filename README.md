@@ -15,6 +15,8 @@ Reach out to me on [Linkedin](https://www.linkedin.com/in/gavin-carew-6476748a/)
   - [Get recipes from a country](#get-recipes)
   - [Get learning resources from a country](#get-resources)
   - [Register a new user](#register)
+  - [User login](#login)
+  - [User logout](#logout)
   - [Add a new favorite recipe](#new-favorite)
   - [Get a user's favorites](#favorites)
   - [Delete a user's favorites](#delete-favorite)
@@ -173,6 +175,40 @@ Register a new user. For this endpoint, all parameters are required.
 }
  ```
 ---
+ ## POST <a name="login"></a>/api/v1/sessions
+ [Back to top](#contents)
+
+User login. For this endpoint, all parameters are required.
+
+   | Parameter      | Description | Parameter type      | Data type |
+   | ----------- | ----------- | ----------- | ----------- |
+   | **email** | User email  | body   | String        |
+   | **password** | User password      | body   | String        |
+
+**Sample response (status 201)**
+ ```json
+{
+    "data": {
+        "id": "3",
+        "type": "user",
+        "attributes": {
+            "name": "Athena Dao",
+            "email": "athenadao@bestgirlever.com",
+            "api_key": "58ec6581e4ce87b5b154332c7bbd6b1c"
+        }
+    }
+}
+ ```
+ ---
+  ## <a name="logout"></a>DELETE /api/v1/sessions
+ [Back to top](#contents)
+
+Logs a user out/ ends their session.
+
+A successful response will return return a `204 No Content` status code.
+
+---
+
  ## <a name="new-favorite"></a>POST /api/v1/favorites
  [Back to top](#contents)
 
@@ -235,7 +271,7 @@ Get a user's favorites
  ## <a name="delete-favorite"></a>DELETE /api/v1/favorites
  [Back to top](#contents)
 
-Register a new user. For this endpoint, all parameters are required.
+Delete one of the user's favorited recipes.
 
    | Parameter      | Description | Parameter type      | Data type |
    | ----------- | ----------- | ----------- | ----------- |
