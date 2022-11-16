@@ -9,8 +9,7 @@ Created with Rails 5.2.8
 
 Reach out to me on [Linkedin](https://www.linkedin.com/in/gavin-carew-6476748a/) or  [Github](https://github.com/gjcarew) 
 
-## Table of contents
-
+## <a name="contents"></a> Table of contents
 - [Database setup](#database-setup)
 - [Endpoints](#endpoints)
   - [Get recipes from a country](#get-recipes)
@@ -61,6 +60,8 @@ rails s
 # <a name="endpoints"></a>Endpoints
 
 ## <a name="get-recipes"></a> GET /api/v1/recipes
+[Back to top](#contents)
+
 Gets recipes from a single country.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -108,6 +109,8 @@ Gets recipes from a single country.
  ```
 ---
  ## <a name="get-resources"></a>GET /api/v1/learning_resources
+ [Back to top](#contents)
+
 Gets learning resources from a single country.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -143,6 +146,8 @@ Gets learning resources from a single country.
  ```
 ---
  ## POST <a name="register"></a>/api/v1/users
+ [Back to top](#contents)
+
 Register a new user. For this endpoint, all parameters are required.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -169,6 +174,8 @@ Register a new user. For this endpoint, all parameters are required.
  ```
 ---
  ## <a name="new-favorite"></a>POST /api/v1/favorites
+ [Back to top](#contents)
+
 Add a new favorite recipe. For this endpoint, all parameters are required.
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -189,6 +196,8 @@ Add a new favorite recipe. For this endpoint, all parameters are required.
  ```
 ---
  ## <a name="favorites"></a>GET /api/v1/favorites
+ [Back to top](#contents)
+
 Get a user's favorites
 
    | Parameter      | Description | Parameter type      | Data type |
@@ -224,6 +233,8 @@ Get a user's favorites
  ```
 ---
  ## <a name="delete-favorite"></a>DELETE /api/v1/favorites
+ [Back to top](#contents)
+
 Register a new user. For this endpoint, all parameters are required.
 
    | Parameter      | Description | Parameter type      | Data type |
