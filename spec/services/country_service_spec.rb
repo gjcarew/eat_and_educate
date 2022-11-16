@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe CountryService do 
   context 'class methods' do 
+    before :each do 
+      Rails.cache.clear
+    end
     context '#random' do 
       it 'returns a random country', :vcr do
         country = CountryService.random
