@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe PlacesService do 
   context 'class methods' do 
     context '#tourist_sights' do 
+      before :each do 
+        Rails.cache.clear
+      end
+      
       it 'returns a list of tourist sights within 20 k of the capital', :vcr do
         search = PlacesService.tourist_sights([33.0, 65.0])
         expect(search).to be_a Hash 
